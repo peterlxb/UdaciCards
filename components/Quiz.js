@@ -9,7 +9,9 @@ class Quiz extends Component {
 
   render() {
     return(
-
+      <View style={styles.container}>
+        <Text></Text>
+      </View>
     )
   }
 }

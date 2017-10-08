@@ -1,21 +1,23 @@
 import React,{Component} from 'react';
 import { StyleSheet, Text, View,Platform,StatusBar } from 'react-native';
-import Deck from './components/Deck'
-import NewDeck from './components/NewDeck'
+import AddNewDeck from './components/AddNewDeck'
+import AllDecks from './components/AllDecks'
 import DeckDetail from './components/DeckDetail'
+import AddCard from './components/AddCard'
+import Quiz from './components/Quiz'
 import { TabNavigator,StackNavigator } from 'react-navigation'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
 const Tabs = TabNavigator({
   Deck: {
-    screen:DeckDetail,
+    screen:AllDecks,
     navigationOptions: {
       tabBarLabel:'Decks',
       tabBarIcon: ({tintColor}) => <Ionicons name='ios-bookmarks' size={30} color={tintColor}/>
     }
   },
   NewDeck: {
-    screen:NewDeck,
+    screen:AddNewDeck,
     navigationOptions: {
       tabBarLabel:'NewDeck',
       tabBarIcon: ({tintColor}) => <FontAwesome name='plus-square' size={30} color={tintColor} />

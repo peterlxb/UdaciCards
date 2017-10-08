@@ -1,9 +1,9 @@
 import { AsyncStorage } from 'react-native'
 import {
   getAllDecks,
-  saveDeckTitle,
+  addDeck,
   setData,
-  addCardToDeck,
+  addCard,
   flush
 } from './api'
 import {Notifications, Permissions} from 'expo'
@@ -49,9 +49,9 @@ export function getDecks() {
 }
 
 export function saveDeckTitle(title) {
-  return saveDeckTitle(title);
+  return addDeck(title);
 }
 
 export function addCardToDeck(title, card){
-  return addCardToDeck(title, card)
+  return addCard(title, card)
 }

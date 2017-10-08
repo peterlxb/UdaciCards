@@ -47,3 +47,5 @@ class AddCard extends Component {
     )
   }
 }
+
+export default AddCard

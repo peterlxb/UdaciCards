@@ -18,12 +18,12 @@ class Deck extends Component {
 const styles =  StyleSheet.create({
   deckContainer: {
     flex:1,
-    flexDirection:' column',
+    flexDirection:'column',
     justifyContent: 'space-around',
     backgroundColor:'#fff',
     alignItems:'stretch',
     borderColor:'black',
-    borderWidth:'1',
+    borderWidth:1,
     padding:5
   },
   title: {
