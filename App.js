@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
-import { StyleSheet, Text, View,Platform } from 'react-native';
+import { StyleSheet, Text, View,Platform,StatusBar } from 'react-native';
 import Deck from './components/Deck'
 import NewDeck from './components/NewDeck'
 import DeckDetail from './components/DeckDetail'
-import { TabNavigator } from 'react-navigation'
+import { TabNavigator,StackNavigator } from 'react-navigation'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
 const Tabs = TabNavigator({
@@ -37,11 +37,33 @@ const Tabs = TabNavigator({
   }
 })
 
+const MainNav = StackNavigator({
+  Home:{
+    screen: Tabs
+  },
+  DeckDetail: {
+    screen:DeckDetail
+  },
+  Quit: {
+    screen:Quiz
+  },
+  AddCard: {
+    screen:AddCard
+  }
+},{
+  initialRouteName: 'Home',
+});
+
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Tabs />
+        <View>
+          <StatusBar
+            backgroundColor={'transparent'}
+            translucent />
+        </View>
+        <MainNav />
       </View>
     );
   }
@@ -50,7 +72,7 @@ export default class App extends React.Component {
 styles = StyleSheet.create({
   container: {
     flex:1,
-    backgroundColor:"white",
+    backgroundColor:"#fff",
     paddingTop:20,
     justifyContent:'space-between',
     marginTop:30,

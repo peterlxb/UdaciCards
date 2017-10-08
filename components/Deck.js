@@ -1,31 +1,39 @@
-import React,{ Component } from 'react'
-import { View, Text ,StyleSheet,FlatList} from 'react-native'
+import React, {Component} from 'react'
+import { Text, TouchableOpacity, Dimensions, StyleSheet } from 'react-native'
 
 class Deck extends Component {
-
   render() {
+
+    const { deck, onPress } = this.props
+    const { width } = Dimensions.get('window')
     return(
-      <View style={styles.container}>
-        <Text style={styles.item}>Deck1</Text>
-        <Text style={styles.item}>Deck2</Text>
-        <Text style={styles.item}>Deck3</Text>
-      </View>
+      <TouchableOpacity style={[styles.deckContainer, {width: width}]} onPress={onPress}>
+        <Text style={styles.title}>{deck.title}</Text>
+        <Text style={styles.subTitle}>{deck.questions.length} cards</Text>
+      </TouchableOpacity>
     )
   }
 }
 
-styles = StyleSheet.create({
-  container: {
-    flex:1
+const styles =  StyleSheet.create({
+  deckContainer: {
+    flex:1,
+    flexDirection:' column',
+    justifyContent: 'space-around',
+    backgroundColor:'#fff',
+    alignItems:'stretch',
+    borderColor:'black',
+    borderWidth:'1',
+    padding:5
   },
-  item:{
-    fontSize:20,
-    color:'red',
-    padding:10,
-    height:45,
-    marginTop:20,
-    marginBottom:20
-
+  title: {
+    textAlign:'center',
+    fontSize:30
+  },
+  subTitle: {
+    fontSize: 20,
+    color:'black',
+    textAlign:'center'
   }
 })
 
