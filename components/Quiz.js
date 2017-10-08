@@ -5,13 +5,12 @@ class Quiz extends Component {
 
   state = {
     showAnswer: false,
-    currentCardIdx:0,
-    corrects:0,
-    incorrects:0
+    currentCardIdx: 0,
+    corrects: 0,
+    incorrects: 0
   };
 
-  const CORRECT = 'correct'
-  const INCORRECT = 'incorrect';
+
 
 
   onShowPress = () => {
@@ -19,6 +18,9 @@ class Quiz extends Component {
   }
 
   onNextPress = (answer) => {
+
+    const CORRECT = 'correct'
+    const INCORRECT = 'incorrect'
 
     if(answer === CORRECT) {
       this.setState((state) => ({

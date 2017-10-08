@@ -1,9 +1,9 @@
 import { AsyncStorage } from 'react-native';
 
-const STORAGE_KEY = '@flashcards:storage';
+const ALL_DECKS = 'ALL_DECKS';
 
 export function getAllDecks() {
-  return AsyncStorage.getItem(STORAGE_KEY).then(JSON.parse).then((result) => result);
+  return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse).then((result) => result);
 }
 
 export function getDeck() {
@@ -11,34 +11,34 @@ export function getDeck() {
 }
 
 export function addDeck(deckTitle) {
-  return AsyncStorage.getItem(STORAGE_KEY).then(JSON.parse)
+  return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse)
     .then((result) => {
       result[deckTitle] = {
         title: deckTitle,
         questions:[]
       };
 
-      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(result));
+      AsyncStorage.setItem(ALL_DECKS, JSON.stringify(result));
       return result
     });
 }
 
 export function setData(data){
-  return AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  return AsyncStorage.setItem(ALL_DECKS, JSON.stringify(data));
 }
 
 export function addCard(deckTitle, card) {
-  return AsyncStorage.getItem(STORAGE_KEY).then(JSON.parse)
+  return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse)
     .then((result) => {
       result[deckTitle].questions.push(card);
 
-      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(result));
+      AsyncStorage.setItem(ALL_DECKS, JSON.stringify(result));
       return result;
     });
 }
 
 export function flush(){
-  return AsyncStorage.removeItem(STORAGE_KEY).then(
+  return AsyncStorage.removeItem(ALL_DECKS).then(
     () => console.log('cleared!')
   )
 }
