@@ -2,12 +2,13 @@ import React,{Component} from 'react';
 import { StyleSheet, Text, View,Platform } from 'react-native';
 import Deck from './components/Deck'
 import NewDeck from './components/NewDeck'
+import DeckDetail from './components/DeckDetail'
 import { TabNavigator } from 'react-navigation'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
 const Tabs = TabNavigator({
   Deck: {
-    screen:Deck,
+    screen:DeckDetail,
     navigationOptions: {
       tabBarLabel:'Decks',
       tabBarIcon: ({tintColor}) => <Ionicons name='ios-bookmarks' size={30} color={tintColor}/>
