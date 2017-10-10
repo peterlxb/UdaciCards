@@ -24,6 +24,7 @@ class AllDecks extends Component {
     const { navigate } = this.props.navigation
 
     return(
+
       <FlatList
         data={Object.keys(decks)}
         keyExtractor={(data, index) => index}
@@ -34,6 +35,7 @@ class AllDecks extends Component {
             />
           }
       />
+
     )
   }
 }
