@@ -12,16 +12,11 @@ class Quiz extends Component {
     incorrects: 0
   };
 
-
-  
-
   onShowPress = () => {
     this.setState((state) => ({ showAnswer: !state.showAnswer }));
   }
 
   onNextPress = (answer) => {
-
-
 
     if(answer === CORRECT) {
       this.setState((state) => ({
@@ -40,17 +35,13 @@ class Quiz extends Component {
 
   render() {
 
-    const flipTo = {
-      answer: 'Answer',
-      question: 'Question'
-    };
-
     const {
       showAnswer,
       currentCardIdx,
       corrects,
       incorrects
     } =  this.state
+
     const { deck } = this.props.navigation.state.params
     const currentCard = deck.questions[currentCardIdx]
     const numberOfQuestions = deck.questions.length
@@ -83,10 +74,6 @@ class Quiz extends Component {
           :
           <Text style={styles.mainText}>{currentCard.question}</Text>
         }
-
-        <TouchableOpacity onPress={this.onShowPress}>
-          <Text style={styles.flipText}>Flip to {showAnswer ? flipTo.question : flipTo.answer}</Text>
-        </TouchableOpacity>
 
         <TouchableOpacity style={styles.correctButton} onPress={() => this.onNextPress(CORRECT)}>
           <Text style={styles.buttonText}>Correct</Text>
