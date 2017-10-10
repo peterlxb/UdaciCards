@@ -78,6 +78,6 @@ styles = StyleSheet.create({
     paddingTop:20,
     justifyContent:'space-between',
     marginTop:25,
-    marginBottom:25
+    marginBottom:0
   }
 })

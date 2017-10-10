@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { FormLabel, FormInput, Button, FormValidationMessage } from 'react-native-elements';
-import { addCardToDeck } from '../utils/helper';
+import { addCardToDeck ,clearLocalNotification,setLocalNotification} from '../utils/helper';
 
 class AddCard extends Component {
-    
+
 
     state = {
         question: '',
@@ -23,6 +23,10 @@ class AddCard extends Component {
         const { deckTitle } = this.props.navigation.state.params
 
         addCardToDeck(deckTitle, {question, answer}).then((data) => navigate('DeckList'))
+
+        clearLocalNotification().
+          then(setLocalNotification)
+
     }
 
     render() {
