@@ -22,7 +22,7 @@ const styles =  StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor:'#fff',
     alignItems:'stretch',
-    borderColor:'black',
+    borderColor:'red',
     borderWidth:1,
     padding:5
   },

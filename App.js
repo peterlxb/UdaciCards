@@ -46,7 +46,7 @@ const MainNav = StackNavigator({
   DeckDetail: {
     screen:DeckDetail
   },
-  Quit: {
+  Quiz: {
     screen:Quiz
   },
   AddCard: {
@@ -77,7 +77,7 @@ styles = StyleSheet.create({
     backgroundColor:"#fff",
     paddingTop:20,
     justifyContent:'space-between',
-    marginTop:30,
-    marginBottom:80
+    marginTop:25,
+    marginBottom:25
   }
 })

@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native'
+import { CORRECT, INCORRECT } from '../utils/helper';
+
 
 class Quiz extends Component {
 
@@ -11,7 +13,7 @@ class Quiz extends Component {
   };
 
 
-
+  
 
   onShowPress = () => {
     this.setState((state) => ({ showAnswer: !state.showAnswer }));
@@ -19,8 +21,7 @@ class Quiz extends Component {
 
   onNextPress = (answer) => {
 
-    const CORRECT = 'correct'
-    const INCORRECT = 'incorrect'
+
 
     if(answer === CORRECT) {
       this.setState((state) => ({

@@ -4,9 +4,10 @@ import {
   addDeck,
   setData,
   addCard,
-  flush
 } from './api'
-import {Notifications, Permissions} from 'expo'
+
+export const CORRECT = 'correct';
+export const INCORRECT = 'incorrect';
 
 export function getOriginData() {
   const data = {

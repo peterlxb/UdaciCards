@@ -6,10 +6,6 @@ import { getDecks } from '../utils/helper'
 
 class AllDecks extends Component {
 
-  static navigationOptions = {
-      tabBarLabel: 'Deck List',
-  };
-
   state = {
     decks: {}
   }

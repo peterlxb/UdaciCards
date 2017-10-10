@@ -6,10 +6,6 @@ export function getAllDecks() {
   return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse).then((result) => result);
 }
 
-export function getDeck() {
-
-}
-
 export function addDeck(deckTitle) {
   return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse)
     .then((result) => {
@@ -28,17 +24,10 @@ export function setData(data){
 }
 
 export function addCard(deckTitle, card) {
-  return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse)
-    .then((result) => {
-      result[deckTitle].questions.push(card);
+    return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse).then((result) => {
+        result[deckTitle].questions.push(card);
 
-      AsyncStorage.setItem(ALL_DECKS, JSON.stringify(result));
-      return result;
+        AsyncStorage.setItem(ALL_DECKS, JSON.stringify(result));
+        return result;
     });
-}
-
-export function flush(){
-  return AsyncStorage.removeItem(ALL_DECKS).then(
-    () => console.log('cleared!')
-  )
 }
