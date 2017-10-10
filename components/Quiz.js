@@ -12,12 +12,13 @@ class Quiz extends Component {
     incorrects: 0
   };
 
+  //toggle false or true of the value showAnswer
   onShowPress = () => {
     this.setState((state) => ({ showAnswer: !state.showAnswer }));
   }
 
   onNextPress = (answer) => {
-
+    //base on params answer
     if(answer === CORRECT) {
       this.setState((state) => ({
         showAnswer:false,
@@ -75,6 +76,10 @@ class Quiz extends Component {
           <Text style={styles.mainText}>{currentCard.question}</Text>
         }
 
+        <TouchableOpacity onPress={this.onShowPress}>
+            <Text style={styles.ShowText}>Show {showAnswer ? "Question" : "Anwser"}</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.correctButton} onPress={() => this.onNextPress(CORRECT)}>
           <Text style={styles.buttonText}>Correct</Text>
         </TouchableOpacity>
@@ -96,7 +101,7 @@ const styles = StyleSheet.create({
   mainText: {
     fontSize:30
   },
-  flipText: {
+  ShowText: {
     fontSize:15,
     fontWeight:'bold'
   },
