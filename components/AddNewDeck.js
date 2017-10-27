@@ -14,21 +14,22 @@ class AddNewDeck extends Component {
   }
 
   onTextChange = (text) => {
-    if(text) {
-      this.setState(() => (
-        {
-          title: text,
-          error: false
-        }
-    ));
-  } else {
-    this.setState(() => (
-      {
-        title: text,
-        error: true
-      }
-    ));
-    }
+
+    text ?
+        this.setState(() => (
+          {
+            title: text,
+            error: false
+          }
+        ))
+        :
+        this.setState(() => (
+          {
+            title: text,
+            error: true
+          }
+        ));
+
   }
 
   submit = () => {
