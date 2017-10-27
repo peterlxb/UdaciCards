@@ -1,5 +1,7 @@
 import { TabNavigator,StackNavigator } from 'react-navigation'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import { StyleSheet, Text, View,Platform,StatusBar } from 'react-native';
+import React,{Component} from 'react';
 import AddNewDeck from './AddNewDeck'
 import AllDecks from './AllDecks'
 import DeckDetail from './DeckDetail'

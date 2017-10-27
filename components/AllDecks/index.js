@@ -1,7 +1,8 @@
 import React,{ Component } from 'react'
 import { View, Text ,StyleSheet,FlatList} from 'react-native'
-import Deck from './Deck'
-import { getDecks } from '../utils/helper'
+import styles from './styles';
+import Deck from '../Deck'
+import { getDecks } from './../../utils/helper'
 
 
 class AllDecks extends Component {
@@ -39,14 +40,5 @@ class AllDecks extends Component {
     )
   }
 }
-
-styles = StyleSheet.create({
-  container: {
-    flex:1,
-    backgroundColor:'#fff',
-    alignItems:'center',
-    justifyContent:'center'
-  }
-})
 
 export default AllDecks

@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native'
-import { CORRECT, INCORRECT } from '../utils/helper';
-
+import {View, Text, TouchableOpacity} from 'react-native'
+import { CORRECT, INCORRECT } from './../../utils/helper';
 
 class Quiz extends Component {
 
@@ -92,32 +91,6 @@ class Quiz extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    justifyContent:'space-around',
-    alignItems:'center'
-  },
-  mainText: {
-    fontSize:30
-  },
-  ShowText: {
-    fontSize:15,
-    fontWeight:'bold'
-  },
-  correctButton: {
-    backgroundColor:'green',
-    borderRadius:10
-  },
-  incorrectButton: {
-    backgroundColor:'red',
-    borderRadius:10
-  },
-  buttonText: {
-    fontSize:20,
-    padding:20,
-    textAlign:'center'
-  }
-});
+
 
 export default Quiz

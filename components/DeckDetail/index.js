@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
+
 class DeckDetail extends Component {
     render() {
         const { state, navigate } = this.props.navigation;
@@ -20,33 +21,6 @@ class DeckDetail extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-    },
-    title: {
-        fontSize: 30
-    },
-    subtitle: {
-        fontSize: 12
-    },
-    button: {
-        borderRadius: 10,
-        padding: 30,
-        margin: 20,
-    },
-    addButton: {
-        backgroundColor: '#fff',
-        borderColor: 'black',
-        borderWidth: 1,
-    },
-    startButton: {
-        backgroundColor: 'black',
-    },
-    startText: {
-        color: 'white',
-    }
-});
+
 
 export default DeckDetail;
