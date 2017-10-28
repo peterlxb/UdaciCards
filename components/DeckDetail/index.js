@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-
+import styles from './styles'
 
 class DeckDetail extends Component {
     render() {
@@ -14,7 +14,7 @@ class DeckDetail extends Component {
                     <Text onPress={() => navigate('AddCard', {deckTitle: deck.title})}>Add Card</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.button, styles.startButton]}>
-                    <Text style={styles.startText} onPress={() => navigate('Quiz',{deck})}>Start Quiz</Text>
+                    <Text style={styles.startText} onPress={() => navigate('Quiz',{deck})}>Start a Quiz</Text>
                 </TouchableOpacity>
             </View>
         )
