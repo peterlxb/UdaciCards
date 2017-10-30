@@ -26,7 +26,7 @@ class AllDecks extends Component {
     return(
 
       <FlatList
-        data={Object.keys(decks)}
+        data={Object.keys(decks)} //get title of Each deck
         keyExtractor={(data, index) => index}
         renderItem={(data) =>
           <Deck
@@ -43,7 +43,7 @@ class AllDecks extends Component {
 function mapStateToProps(decks) {
 
   return {
-    decks: decks
+    decks: decks // plain object 
   }
 }
 
