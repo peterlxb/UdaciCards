@@ -1,11 +1,14 @@
 import React,{Component} from 'react';
 import { StyleSheet, Text, View,Platform,StatusBar } from 'react-native';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 import MainNav from './components/TabsComponents'
-
+import reducer from './reducers'
 
 export default class App extends React.Component {
   render() {
     return (
+    <Provider store={createStore(reducer)}>
       <View style={styles.container}>
         <View>
           <StatusBar
@@ -14,6 +17,7 @@ export default class App extends React.Component {
         </View>
         <MainNav />
       </View>
+    </Provider>
     );
   }
 }
