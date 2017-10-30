@@ -17,13 +17,13 @@ class AddCard extends Component {
         }));
     }
 
-    submit = () => {
+    submit = async () => {
         const { question, answer } = this.state
         const { navigation } = this.props;
         const { deckTitle } = this.props.navigation.state.params
 
-        addCardToDeck(deckTitle, {question, answer});
-
+        await addCardToDeck(deckTitle, {question, answer});
+        this.setState({ question: '', answer: '' });
 
         clearLocalNotification().
           then(setLocalNotification)

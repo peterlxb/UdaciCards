@@ -52,7 +52,7 @@ export function getDecks() {
   });
 }
 
-export function saveDeckTitle(title) {
+export function saveDeckTitle (title) {
   return addDeck(title);
 }
 

@@ -32,7 +32,7 @@ class AddNewDeck extends Component {
 
   }
 
-  submit = () => {
+  submit = async () => {
     const { title } = this.state
     const { navigation } = this.props
     if(!title) {
@@ -40,7 +40,7 @@ class AddNewDeck extends Component {
       return
     }
 
-    saveDeckTitle(title);
+    await saveDeckTitle(title);
     this.setState({ title: '' });
 
     navigation.goBack();

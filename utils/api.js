@@ -2,11 +2,23 @@ import { AsyncStorage } from 'react-native';
 
 const ALL_DECKS = 'ALL_DECKS';
 
-export function getAllDecks() {
-  return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse).then((result) => result);
-}
+export const  getAllDecks = async () => {
 
-export function addDeck(deckTitle) {
+  try {
+    const value = await AsyncStorage.getItem(ALL_DECKS);
+    if(value) {
+      return JSON.parse(value)
+    }
+    return {};
+  } catch(error) {
+    console.warn('Error getting decks:', error);
+    return {};
+  }
+
+};
+
+export const addDeck = async (deckTitle) => {
+
   return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse)
     .then((result) => {
       result[deckTitle] = {
@@ -23,7 +35,8 @@ export function setData(data){
   return AsyncStorage.setItem(ALL_DECKS, JSON.stringify(data));
 }
 
-export function addCard(deckTitle, card) {
+export const addCard = async (deckTitle, card) => {
+
     return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse).then((result) => {
         result[deckTitle].questions.push(card);
 
