@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native'
 import {
-  getAllDecks,
+  fetchAllDecks,
   addDeck,
   setData,
   addCard,
@@ -43,7 +43,7 @@ export function getOriginData() {
 }
 
 export function getDecks() {
-  return getAllDecks().then((decks) => {
+  return fetchAllDecks().then((decks) => {
     if(decks !== null) {
       return decks
     }
@@ -59,6 +59,8 @@ export function saveDeckTitle (title) {
 export function addCardToDeck(title, card){
   return addCard(title, card)
 }
+
+
 
 export function clearLocalNotification () {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)

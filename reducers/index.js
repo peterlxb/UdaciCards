@@ -9,6 +9,8 @@ import {
   REMOVE_DECK
 } from '../actions/Deck'
 
+import { submitEntry } from '../utils/api'
+
 function decks(state = {},action){
   const { title, question, answer} = action
 
@@ -58,6 +60,8 @@ function decks(state = {},action){
         }
       }
     }
+    default:
+      return state;
 
   }
 }

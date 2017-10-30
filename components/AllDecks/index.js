@@ -4,7 +4,7 @@ import { View, Text ,StyleSheet,FlatList} from 'react-native'
 import styles from './styles';
 import Deck from '../Deck'
 import { getDecks } from './../../utils/helper'
-import getDecks from './../../actions/Deck'
+import {getAllDecks} from './../../actions/Deck'
 
 
 class AllDecks extends Component {
@@ -14,7 +14,7 @@ class AllDecks extends Component {
   // }
 
   componentDidMount() {
-    getDecks().then(decks => this.props.getDecks(decks))
+    getDecks().then(decks => this.props.getAllDecks(decks))
 
   }
 
@@ -26,12 +26,12 @@ class AllDecks extends Component {
     return(
 
       <FlatList
-        data={Object.keys(decks)}
+        data={decks}
         keyExtractor={(data, index) => index}
         renderItem={(data) =>
           <Deck
-            deck={decks[data.item]}
-            onPress={() => navigate('DeckDetail', { deckDetails: decks[data.item] })}
+            deck={}
+            onPress={() => navigate('DeckDetail', { deckDetails: decks.map(deck => deck) })}
             />
           }
       />
@@ -41,12 +41,13 @@ class AllDecks extends Component {
 }
 
 function mapStateToProps(decks) {
+
   return {
-    decks: (Object.keys(decks).reduce((result) => {
-      result.push(decks)
+    decks: Object.keys(decks).reduce((result,id) => {
+      result.push(decks[id].title)
       return result
-    },[]))
+    },[])
   }
 }
 
-export default connect(mapStateToProps)(AllDecks)
+export default connect(mapStateToProps, {getAllDecks})(AllDecks)
