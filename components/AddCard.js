@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View} from 'react-native';
 import { FormLabel, FormInput, Button, FormValidationMessage } from 'react-native-elements';
 import { addCardToDeck ,clearLocalNotification,setLocalNotification} from '../utils/helper';
 
@@ -19,18 +19,21 @@ class AddCard extends Component {
 
     submit = () => {
         const { question, answer } = this.state
-        const { navigate } = this.props.navigation
+        const { navigation } = this.props;
         const { deckTitle } = this.props.navigation.state.params
 
-        addCardToDeck(deckTitle, {question, answer}).then((data) => navigate('DeckList'))
+        addCardToDeck(deckTitle, {question, answer});
+
 
         clearLocalNotification().
           then(setLocalNotification)
 
+        navigation.goBack();
     }
 
     render() {
         const { question, answer } = this.state;
+
         return (
             <View>
                 <FormLabel>Question</FormLabel>

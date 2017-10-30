@@ -11,7 +11,7 @@ class DeckDetail extends Component {
                 <Text style={styles.title}>{deck.title}</Text>
                 <Text style={styles.subtitle}>{deck.questions.length} cards</Text>
                 <TouchableOpacity style={[styles.button, styles.addButton]}>
-                    <Text onPress={() => navigate('AddCard', {deckTitle: deck.title})}>Add Card</Text>
+                    <Text onPress={() => navigate('AddCard', {deckTitle: deck.title})}>Create New Question</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.button, styles.startButton]}>
                     <Text style={styles.startText} onPress={() => navigate('Quiz',{deck})}>Start a Quiz</Text>

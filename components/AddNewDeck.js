@@ -34,13 +34,16 @@ class AddNewDeck extends Component {
 
   submit = () => {
     const { title } = this.state
-    const { navigate } = this.props.navigation
+    const { navigation } = this.props
     if(!title) {
       this.setState(() => ({error:true}));
       return
     }
 
-    saveDeckTitle(title).then((data) => navigate('DeckList'));
+    saveDeckTitle(title);
+    this.setState({ title: '' });
+
+    navigation.goBack();
   }
 
   render() {
