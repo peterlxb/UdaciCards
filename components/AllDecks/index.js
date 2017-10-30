@@ -26,12 +26,12 @@ class AllDecks extends Component {
     return(
 
       <FlatList
-        data={decks}
+        data={Object.keys(decks)}
         keyExtractor={(data, index) => index}
         renderItem={(data) =>
           <Deck
-            deck={}
-            onPress={() => navigate('DeckDetail', { deckDetails: decks.map(deck => deck) })}
+            deck={decks[data.item]}
+            onPress={() => navigate('DeckDetail', { deckDetails: decks[data.item]})}
             />
           }
       />
@@ -43,10 +43,7 @@ class AllDecks extends Component {
 function mapStateToProps(decks) {
 
   return {
-    decks: Object.keys(decks).reduce((result,id) => {
-      result.push(decks[id].title)
-      return result
-    },[])
+    decks: decks
   }
 }
 
