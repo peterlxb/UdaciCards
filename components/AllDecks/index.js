@@ -1,27 +1,26 @@
 import React,{ Component } from 'react'
+import { connect } from 'react-redux'
 import { View, Text ,StyleSheet,FlatList} from 'react-native'
 import styles from './styles';
 import Deck from '../Deck'
 import { getDecks } from './../../utils/helper'
+import getDecks from './../../actions/Deck'
 
 
 class AllDecks extends Component {
 
-  state = {
-    decks: {}
-  }
+  // state = {
+  //   decks: {}
+  // }
 
   componentDidMount() {
-    getDecks().then((decks) => {
-      this.setState({
-        decks
-      })
-    })
+    getDecks().then(decks => this.props.getDecks(decks))
+
   }
 
   render() {
 
-    const { decks } = this.state
+    const { decks } = this.props
     const { navigate } = this.props.navigation
 
     return(
@@ -41,4 +40,13 @@ class AllDecks extends Component {
   }
 }
 
-export default AllDecks
+function mapStateToProps(decks) {
+  return {
+    decks: (Object.keys(decks).reduce((result) => {
+      result.push(decks)
+      return result
+    },[]))
+  }
+}
+
+export default connect(mapStateToProps)(AllDecks)
