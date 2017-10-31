@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import {View, Text} from 'react-native'
+import { connect } from 'react-redux'
 import { FormLabel, FormInput, Button, FormValidationMessage } from 'react-native-elements'
 import { saveDeckTitle } from '../utils/APIHelper'
+import {addDeck} from '../actions/Deck'
 
 class AddNewDeck extends Component {
   static navigationOptions = {
@@ -32,15 +34,17 @@ class AddNewDeck extends Component {
 
   }
 
-  submit = async () => {
+  submit = () => {
+
     const { title } = this.state
     const { navigation } = this.props
     if(!title) {
       this.setState(() => ({error:true}));
       return
     }
+    this.props.dispatch(addDeck(title))
+    saveDeckTitle(title)
 
-    await saveDeckTitle(title);
     this.setState({ title: '' });
 
     navigation.goBack();
@@ -49,6 +53,7 @@ class AddNewDeck extends Component {
   render() {
 
     const { title, error } = this.state
+
 
     return(
       <View>
@@ -61,4 +66,12 @@ class AddNewDeck extends Component {
   }
 }
 
-export default AddNewDeck;
+function mapStateToProps(decks){
+  return {
+    decks: decks
+  }
+}
+
+
+
+export default connect(mapStateToProps)(AddNewDeck);

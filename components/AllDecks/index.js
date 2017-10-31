@@ -13,14 +13,14 @@ class AllDecks extends Component {
   //   decks: {}
   // }
 
-  componentDidMount() {
-    getDecks().then(decks => this.props.getAllDecks(decks))
-
-  }
+  // componentDidMount() {
+  //   getDecks().then(decks => this.props.getAllDecks(decks))
+  //
+  // }
 
   render() {
 
-    const { decks } = this.props
+    const { decks ,getAllDecks} = this.props
     const { navigate } = this.props.navigation
 
     return(
@@ -47,4 +47,10 @@ function mapStateToProps(decks) {
   }
 }
 
-export default connect(mapStateToProps, {getAllDecks})(AllDecks)
+function mapDispatchToProps(dispatch){
+  return {
+    getAllDecks: (decks) => dispatch(getAllDecks(decks))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllDecks)

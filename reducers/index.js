@@ -9,7 +9,7 @@ import {
   REMOVE_DECK
 } from '../actions/Deck'
 
-
+import {submitEntry} from '../utils/APIHelper'
 
 function decks(state = {},action){
   const { title, question, answer} = action
@@ -23,16 +23,18 @@ function decks(state = {},action){
     }
 
     case ADD_DECK: {
+
       return {
         ...state,
         [title]: {
           title,
-          question:[],
+          questions:[],
         }
       }
     }
 
     case REMOVE_DECK: {
+      
       return {
         ...state,
         [title]:{
@@ -42,6 +44,9 @@ function decks(state = {},action){
     }
 
     case ADD_CARD: {
+      submitEntry({key:title,
+                    entry: {title,
+                            questions:[{ result:null, question,answer }, ...state[title].questions]}})
       return {
         ...state,
         [title]: {

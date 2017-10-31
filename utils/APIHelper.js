@@ -77,6 +77,12 @@ export function addCardToDeck(deckTitle, card){
   });
 }
 
+export function submitEntry({key, entry}){
+  return AsyncStorage.mergeItem(ALL_DECKS,JSON.stringify({
+    [key]:entry
+  }))
+}
+
 
 
 export function clearLocalNotification () {

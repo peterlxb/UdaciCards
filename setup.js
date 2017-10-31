@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { StyleSheet, AppState,Text, View,Platform,StatusBar ,AppRegistry,AsyncStorage} from 'react-native';
+import { StyleSheet, AppState,Text, View,Platform,StatusBar ,AppRegistry} from 'react-native';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import MainNav from './components/TabsComponents'
@@ -7,7 +7,9 @@ import reducers from './reducers'
 
 let store = createStore(reducers)
 
-class App extends React.Component {
+function setup() {
+
+   class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -20,13 +22,13 @@ class App extends React.Component {
       var self = this;
       AppState.addEventListener('change',this._handleAppStateChange.bind(this));
       this.setState({isStoreLoading:true});
-      AsyncStorage.getItem('ALL_DECKS').then((value) => {
+      AsyncStorage.getItem('completeStore').then((value) => {
         if(value && value.length){
           let initialStore = JSON.parse(value)
           self.setState({store: createStore(reducers, initialStore)})
 
         } else {
-          self.setState({store: store});
+          self.setState({store: store})
         }
         self.setState({isStoreLoading:false})
       }).catch((error) => {
@@ -36,16 +38,16 @@ class App extends React.Component {
     }
 
     componentWillUnmount() {
-      AppState.removeEventListener('change',this._handleAppStateChange.bind(this));
+      AppState.removeEventListener('change',this,_handleAppStateChange.bind(this));
     }
 
     _handleAppStateChange(currentAppState) {
       let storingValue = JSON.stringify(this.state.store.getState())
-      AsyncStorage.setItem('ALL_DECKS',storingValue);
+      AsyncStorage.setItem('completeStore',storingValue)
     }
 
     render() {
-      if(this.state.isStoreLoading){
+      if(this.store.isStoreLoading){
         return <Text>Loading Store</Text>
       } else {
         return(
@@ -63,6 +65,10 @@ class App extends React.Component {
       }
     }
   }
+  return App
+}
+
+
 
 styles = StyleSheet.create({
   container: {
@@ -75,4 +81,4 @@ styles = StyleSheet.create({
   }
 })
 
-export default App
+module.exports = setup;
