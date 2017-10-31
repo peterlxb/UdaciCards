@@ -1,16 +1,11 @@
 import { AsyncStorage } from 'react-native'
-import {
-  fetchAllDecks,
-  addDeck,
-  setData,
-  addCard,
-} from './api'
 import { Notifications, Permissions } from 'expo'
 
 export const CORRECT = 'correct';
 export const INCORRECT = 'incorrect';
 
 const NOTIFICATION_KEY =  'UdaciCards:notifications'
+const ALL_DECKS = 'ALL_DECKS';
 
 export function getOriginData() {
   const data = {
@@ -42,22 +37,44 @@ export function getOriginData() {
   return data
 }
 
-export function getDecks() {
-  return fetchAllDecks().then((decks) => {
-    if(decks !== null) {
-      return decks
-    }
+export function setData(data){
+  return AsyncStorage.setItem(ALL_DECKS, JSON.stringify(data));
+}
 
-    return getOriginData();
+export function getDecks (){
+
+  return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse)
+          .then((decks) => {
+            if(decks !== null) {
+              return decks
+            }
+
+            return getOriginData();
+          })
+}
+
+export function saveDeckTitle (deckTitle) {
+
+  return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse)
+    .then((result) => {
+      result[deckTitle] = {
+        title: deckTitle,
+        questions:[]
+      };
+
+      AsyncStorage.setItem(ALL_DECKS, JSON.stringify(result));
+      return result
+    });
+}
+
+export function addCardToDeck(deckTitle, card){
+
+  return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse).then((result) => {
+      result[deckTitle].questions.push(card);
+
+      AsyncStorage.setItem(ALL_DECKS, JSON.stringify(result));
+      return result;
   });
-}
-
-export function saveDeckTitle (title) {
-  return addDeck(title);
-}
-
-export function addCardToDeck(title, card){
-  return addCard(title, card)
 }
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View} from 'react-native';
 import { FormLabel, FormInput, Button, FormValidationMessage } from 'react-native-elements';
-import { addCardToDeck ,clearLocalNotification,setLocalNotification} from '../utils/helper';
+import { addCardToDeck ,clearLocalNotification,setLocalNotification} from '../utils/APIHelper';
 
 class AddCard extends Component {
 

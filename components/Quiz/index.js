@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
-import { CORRECT, INCORRECT } from './../../utils/helper';
+import { CORRECT, INCORRECT } from './../../utils/APIHelper';
 import styles from './styles'
 
 class Quiz extends Component {

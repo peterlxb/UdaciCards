@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { View, Text ,StyleSheet,FlatList} from 'react-native'
 import styles from './styles';
 import Deck from '../Deck'
-import { getDecks } from './../../utils/helper'
+import { getDecks } from './../../utils/APIHelper'
 import {getAllDecks} from './../../actions/Deck'
 
 
@@ -43,7 +43,7 @@ class AllDecks extends Component {
 function mapStateToProps(decks) {
 
   return {
-    decks: decks // plain object 
+    decks: decks // plain object
   }
 }
 
