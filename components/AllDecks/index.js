@@ -13,10 +13,10 @@ class AllDecks extends Component {
   //   decks: {}
   // }
 
-  // componentDidMount() {
-  //   getDecks().then(decks => this.props.getAllDecks(decks))
-  //
-  // }
+  componentDidMount() {
+    getDecks().then(decks => this.props.getAllDecks(decks))
+
+  }
 
   render() {
 

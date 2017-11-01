@@ -34,7 +34,7 @@ function decks(state = {},action){
     }
 
     case REMOVE_DECK: {
-      
+
       return {
         ...state,
         [title]:{
@@ -44,9 +44,6 @@ function decks(state = {},action){
     }
 
     case ADD_CARD: {
-      submitEntry({key:title,
-                    entry: {title,
-                            questions:[{ result:null, question,answer }, ...state[title].questions]}})
       return {
         ...state,
         [title]: {
