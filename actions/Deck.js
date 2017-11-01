@@ -2,10 +2,10 @@ export const ADD_DECK =  "ADD_DECK"
 export const GET_DECK = "GET_DECK"
 export const REMOVE_DECK = "REMOVE_DECK"
 
-export function addDeck(title) {
+export function addDeck(deckTitle) {
   return {
     type:ADD_DECK,
-    title
+    deckTitle
   }
 }
 

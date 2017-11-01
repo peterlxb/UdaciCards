@@ -3,7 +3,7 @@ import {View, Text,Alert} from 'react-native'
 import { connect } from 'react-redux'
 import { FormLabel, FormInput, Button, FormValidationMessage } from 'react-native-elements'
 import { saveDeckTitle } from '../utils/APIHelper'
-import {addDeck} from '../actions/Deck'
+import { addDeck } from '../actions/Deck'
 
 class AddNewDeck extends Component {
   static navigationOptions = {
@@ -11,7 +11,7 @@ class AddNewDeck extends Component {
   };
 
   state = {
-    title:'',
+    deckTitle:'',
     error: false
   }
 
@@ -20,14 +20,14 @@ class AddNewDeck extends Component {
     text ?
         this.setState(() => (
           {
-            title: text,
+            deckTitle: text,
             error: false
           }
         ))
         :
         this.setState(() => (
           {
-            title: text,
+            deckTitle: text,
             error: true
           }
         ));
@@ -36,38 +36,38 @@ class AddNewDeck extends Component {
 
   submit = () => {
 
-    const { title } = this.state
+    const { deckTitle } = this.state
     const { navigation,decks } = this.props
-    if(!title) {
+    if(!deckTitle) {
       this.setState(() => ({error:true}));
       return
     }
 
-    if(Object.keys(decks).map((deckTitle) => {
-      if (deckTitle === title){
+    if(Object.keys(decks).map((itemTitle) => {
+      if (itemTitle === deckTitle){
         Alert.alert('Warning', 'Deck title already exists !');
         return;
       }
 
     }))
 
-    this.props.dispatch(addDeck(title))
-    saveDeckTitle(title)
+    this.props.dispatch(addDeck(deckTitle))
+    saveDeckTitle(deckTitle)
 
-    this.setState({ title: '' });
+    this.setState({ deckTitle: '' });
 
     navigation.goBack();
   }
 
   render() {
 
-    const { title, error } = this.state
+    const { deckTitle, error } = this.state
 
 
     return(
       <View>
         <FormLabel>New DECK Title</FormLabel>
-        <FormInput onChangeText={this.onTextChange} value={title} />
+        <FormInput onChangeText={this.onTextChange} value={deckTitle} />
         <FormValidationMessage>{error ? 'Error Message': ''}</FormValidationMessage>
         <Button title="Submit" onPress={this.submit}/>
       </View>

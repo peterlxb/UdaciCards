@@ -9,7 +9,7 @@ class Deck extends Component {
     const { width } = Dimensions.get('window')
     return(
       <TouchableOpacity style={[styles.deckContainer, {width: width}]} onPress={onPress}>
-        <Text style={styles.title}>{deck.title}</Text>
+        <Text style={styles.title}>{deck.deckTitle}</Text>
         <Text style={styles.subTitle}>{deck.questions.length} cards</Text>
       </TouchableOpacity>
     )

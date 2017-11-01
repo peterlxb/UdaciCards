@@ -10,7 +10,7 @@ const ALL_DECKS = 'ALL_DECKS';
 export function getOriginData() {
   const data = {
     React:{
-      title: 'React',
+      deckTitle: 'React',
       questions: [
         {
           queston: 'what is React?',
@@ -23,7 +23,7 @@ export function getOriginData() {
       ]
     },
     JavaScript: {
-      title:'JavaScript',
+      deckTitle:'JavaScript',
       questions: [
         {
           question:'what is closure',
@@ -58,7 +58,7 @@ export function saveDeckTitle (deckTitle) {
   return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse)
     .then((result) => {
       result[deckTitle] = {
-        title: deckTitle,
+        deckTitle: deckTitle,
         questions:[]
       };
 

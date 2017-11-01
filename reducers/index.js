@@ -12,7 +12,7 @@ import {
 import {submitEntry} from '../utils/APIHelper'
 
 function decks(state = {},action){
-  const { title, question, answer} = action
+  const { deckTitle, question, answer} = action
 
   switch(action.type){
     case GET_DECK:{
@@ -26,8 +26,8 @@ function decks(state = {},action){
 
       return {
         ...state,
-        [title]: {
-          title,
+        [deckTitle]: {
+          deckTitle,
           questions:[],
         }
       }
@@ -46,9 +46,9 @@ function decks(state = {},action){
     case ADD_CARD: {
       return {
         ...state,
-        [title]: {
-          title,
-          questions:[{question, answer}, ...state[title].questions]
+        [deckTitle]: {
+          deckTitle,
+          questions:[{question, answer}, ...state[deckTitle].questions]
         }
       }
     }
@@ -56,9 +56,9 @@ function decks(state = {},action){
     case REMOVE_CARD: {
       return {
         ...state,
-        [title]: {
-          title,
-          questions: [...state[title].questions.filter(item => item.question !== question)]
+        [deckTitle]: {
+          deckTitle,
+          questions: [...state[deckTitle].questions.filter(item => item.question !== question)]
         }
       }
     }
