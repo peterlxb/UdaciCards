@@ -42,6 +42,7 @@ class AddNewDeck extends Component {
       this.setState(() => ({error:true}));
       return
     }
+
     this.props.dispatch(addDeck(title))
     saveDeckTitle(title)
 
