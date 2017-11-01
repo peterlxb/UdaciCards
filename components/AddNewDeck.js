@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, Text} from 'react-native'
+import {View, Text,Alert} from 'react-native'
 import { connect } from 'react-redux'
 import { FormLabel, FormInput, Button, FormValidationMessage } from 'react-native-elements'
 import { saveDeckTitle } from '../utils/APIHelper'
@@ -37,11 +37,19 @@ class AddNewDeck extends Component {
   submit = () => {
 
     const { title } = this.state
-    const { navigation } = this.props
+    const { navigation,decks } = this.props
     if(!title) {
       this.setState(() => ({error:true}));
       return
     }
+
+    if(Object.keys(decks).map((deckTitle) => {
+      if (deckTitle === title){
+        Alert.alert('Warning', 'Deck title already exists !');
+        return;
+      }
+
+    }))
 
     this.props.dispatch(addDeck(title))
     saveDeckTitle(title)
@@ -69,7 +77,7 @@ class AddNewDeck extends Component {
 
 function mapStateToProps(decks){
   return {
-    decks: decks
+    decks: decks //plain object
   }
 }
 

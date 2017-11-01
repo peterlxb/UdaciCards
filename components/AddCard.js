@@ -34,11 +34,7 @@ class AddCard extends Component {
           return ;
         }
 
-        this.props.dispatch(addCard({
-          deckTitle,
-          question,
-          answer
-        }));
+      //  this.props.dispatch(addCard({deckTitle,question,answer}));
 
         addCardToDeck(deckTitle, {question, answer});
 
