@@ -12,7 +12,7 @@ import {
 import {submitEntry} from '../utils/APIHelper'
 
 function decks(state = {},action){
-  const { deckTitle, question, answer} = action
+  const { title, question, answer} = action
 
   switch(action.type){
     case GET_DECK:{
@@ -26,8 +26,8 @@ function decks(state = {},action){
 
       return {
         ...state,
-        [deckTitle]: {
-          deckTitle,
+        [title]: {
+          title,
           questions:[],
         }
       }
@@ -46,9 +46,9 @@ function decks(state = {},action){
     case ADD_CARD: {
       return {
         ...state,
-        [deckTitle]: {
-          deckTitle,
-          questions:[{question, answer}, ...state[deckTitle].questions]
+        [title]: {
+          title,
+          questions:[{question, answer}, ...state[title].questions]
         }
       }
     }

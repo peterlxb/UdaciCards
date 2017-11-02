@@ -10,7 +10,7 @@ const ALL_DECKS = 'ALL_DECKS';
 export function getOriginData() {
   const data = {
     React:{
-      deckTitle: 'React',
+      title: 'React',
       questions: [
         {
           queston: 'what is React?',
@@ -23,7 +23,7 @@ export function getOriginData() {
       ]
     },
     JavaScript: {
-      deckTitle:'JavaScript',
+      title:'JavaScript',
       questions: [
         {
           question:'what is closure',
@@ -53,12 +53,12 @@ export function getDecks (){
           })
 }
 
-export function saveDeckTitle (deckTitle) {
+export function saveDeckTitle (title) {
 
   return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse)
     .then((result) => {
-      result[deckTitle] = {
-        deckTitle: deckTitle,
+      result[title] = {
+        title: title,
         questions:[]
       };
 
@@ -67,11 +67,10 @@ export function saveDeckTitle (deckTitle) {
     });
 }
 
-export function addCardToDeck(deckTitle, card){
+export function addCardToDeck(title, card){
 
   return AsyncStorage.getItem(ALL_DECKS).then(JSON.parse).then((result) => {
-      result[deckTitle].questions.push(card);
-
+      result[title].questions.push(card);
       AsyncStorage.setItem(ALL_DECKS, JSON.stringify(result));
       return result;
   });

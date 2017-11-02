@@ -20,23 +20,13 @@ class AddCard extends Component {
     }
 
     submit = () => {
-        const { question, answer } = this.state
+        const { question, answer } = this.state;
         const { navigation } = this.props;
-        const { deckTitle } = this.props.navigation.state.params
+        const { title } = navigation.state.params;
 
-        if(!question) {
-          Alert.alert('Warning','Question cannot be empty !')
-          return ;
-        }
+        //this.props.dispatch(addCard(title,answer,question));
 
-        if(!answer) {
-          Alert.alert('Warning','Answer cannot be empty !')
-          return ;
-        }
-
-        //this.props.dispatch(addCard(deckTitle,{question,answer}));
-
-        addCardToDeck(deckTitle, {question, answer});
+        addCardToDeck(title, {question, answer});
 
         this.setState({ question: '', answer: '' });
 
