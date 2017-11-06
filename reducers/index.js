@@ -53,15 +53,7 @@ function decks(state = {},action){
       }
     }
 
-    case REMOVE_CARD: {
-      return {
-        ...state,
-        [deckTitle]: {
-          deckTitle,
-          questions: [...state[deckTitle].questions.filter(item => item.question !== question)]
-        }
-      }
-    }
+
     default:
       return state;
 

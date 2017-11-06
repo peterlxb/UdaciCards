@@ -24,7 +24,7 @@ class AddCard extends Component {
         const { navigation } = this.props;
         const { title } = navigation.state.params;
 
-        this.props.dispatch(addCard(title,answer,question));
+        //this.props.dispatch(addCard(title,answer,question));
 
         addCardToDeck(title, {question, answer});
 
